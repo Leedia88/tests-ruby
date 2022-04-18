@@ -23,10 +23,19 @@ def array_42(arr)
 end
 
 
-def magic_array(arr)
-    return (arr.flatten).uniq.map!{|v| v%3 == 0 ? v = nil : v = v*2 }.compact.sort
+def magic_array(arr = [])
+    arr.flatten!
+    p arr
+    arr.map! {|v| v*2 }
+    p arr
+    arr.uniq!
+    p arr
+    arr.sort!
+    p arr
+    arr.reject!{|v| v%3==0}
+    return arr
 end
 
-
-
+puts magic_array([1, 2, 3, 4, 5, 6])
+puts magic_array([1, [2, 3], 4, 5, 6, 23, 31, [1, 2, 3]])
 puts magic_array([[32, 54], [48, 12], [21, [1, 2, [3]]], 7, 8])
